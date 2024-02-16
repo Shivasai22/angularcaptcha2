@@ -1,20 +1,36 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
+ 
+import { environment } from '../environments/environment';
+ 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+ 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    RecaptchaFormsModule,
+    RecaptchaModule,
+    AppRoutingModule,
   ],
   providers: [
-    provideClientHydration()
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.recaptcha.siteKey,
+      } as RecaptchaSettings,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+  ],
 })
-export class AppModule { }
+export class AppModule {
+}
+ 

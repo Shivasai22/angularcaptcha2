@@ -1,0 +1,21 @@
+re-captcha.is-invalid > div {
+  border: 1px solid #dc3545 !important;
+  border-radius: 0.2rem;
+}
+
+.spinner {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: #007bff;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
